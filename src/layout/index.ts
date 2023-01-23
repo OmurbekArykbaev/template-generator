@@ -4,5 +4,6 @@
 import Header from "./header/Header"
 import Footer from "./footer/Footer"
 import Layout from "./layout/Layout"
+import Aside from "./aside/Aside"
 
-export { Header, Footer, Layout }
+export { Header, Footer, Layout, Aside }

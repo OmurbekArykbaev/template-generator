@@ -1,10 +1,9 @@
-import { Footer, Header } from './layout'
+import { Footer, Header, Layout } from "./layout"
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Footer />
+      <Layout>coco</Layout>
     </div>
   )
 }
