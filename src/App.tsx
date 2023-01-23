@@ -1,10 +1,10 @@
-import { useState } from "react"
-import Header from "./layout/header/Header"
+import { Footer, Header } from './layout'
 
 function App() {
   return (
     <div className="App">
       <Header />
+      <Footer />
     </div>
   )
 }
