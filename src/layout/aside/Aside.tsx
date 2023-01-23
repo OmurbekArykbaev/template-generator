@@ -1,10 +1,14 @@
+import { Input } from "../../components"
+import styles from "./Aside.module.css"
+
 const Aside = () => {
   return (
-    <aside>
+    <aside className={styles.aside}>
       <div>
         <form>
-          <input type="text" />
-          <input type="text" />
+          <Input />
+          <Input />
+          <Input />
         </form>
       </div>
     </aside>
