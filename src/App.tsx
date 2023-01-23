@@ -1,9 +1,10 @@
 import { useState } from "react"
+import Header from "./layout/header/Header"
 
 function App() {
   return (
     <div className="App">
-      <p className="text-red-500">12</p>
+      <Header />
     </div>
   )
 }
