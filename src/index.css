@@ -9,11 +9,4 @@ body {
 
 .App {
   height: 100%;
-  display: grid;
-  /* justify-content: center; */
-  grid-template-areas:
-    "header header header header"
-    "aside main main main"
-    "aside main  main main"
-    "footer footer footer footer";
 }

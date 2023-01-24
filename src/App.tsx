@@ -1,10 +1,13 @@
+import { TextArea } from "./components"
 import Input from "./components/input"
 import { Footer, Header, Layout } from "./layout"
 
 function App() {
   return (
     <div className="App">
-      <Layout>home</Layout>
+      <Layout>
+        <TextArea cols={5} rows={5} />
+      </Layout>
     </div>
   )
 }
