@@ -1,15 +1,14 @@
-import { TextArea } from "./components"
-import Input from "./components/input"
-import { Footer, Header, Layout } from "./layout"
+import { Layout } from "./layout"
 import Quiz from "./modules/Quiz"
 
 function App() {
   return (
     <div className="App">
       <Layout>
-        <TextArea cols={5} rows={5} />
-        <div className="flex w-full h-[100px]">
+        <div className="flex flex-col space-y-8 w-full h-[100px]">
           <Quiz />
+          <Quiz />
+          <Quiz /> <Quiz />
         </div>
       </Layout>
     </div>
