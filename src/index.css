@@ -4,4 +4,16 @@
 
 body {
   font-size: 16px;
+  background-color: #f1d3b3;
+}
+
+.App {
+  height: 100%;
+  display: grid;
+  /* justify-content: center; */
+  grid-template-areas:
+    "header header header header"
+    "aside main main main"
+    "aside main  main main"
+    "footer footer footer footer";
 }

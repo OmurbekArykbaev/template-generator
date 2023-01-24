@@ -1,8 +1,8 @@
-import styles from "Header.module.css"
+import styles from "./Header.module.css"
 
 const Header = (): JSX.Element => {
   return (
-    <header>
+    <header className={styles.header}>
       <div>
         <ul>
           <li>Ремонт</li>
