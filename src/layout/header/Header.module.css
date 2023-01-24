@@ -1,3 +1,11 @@
 .header {
-  grid-area: header;
+  @apply py-3 bg-[#65647C] text-[#fff]  text-xl;
+}
+
+.header > div {
+  @apply flex justify-around items-center px-3 py-2;
+}
+
+.header > div > ul {
+  @apply flex space-x-6;
 }
