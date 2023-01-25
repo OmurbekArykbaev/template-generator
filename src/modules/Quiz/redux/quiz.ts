@@ -1,25 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
+import { INotWorking } from "../../../types/reapairRequest.interfaces"
 
-interface init {
-  value: number
+interface Result extends INotWorking {
+  userAnswer?: boolean | null
 }
 
+interface init {
+  totalAnswers: Result[]
+}
 const initialState: init = {
-  value: 0,
+  totalAnswers: [],
 }
 
 export const quizSlice = createSlice({
   name: "quiz-repair-request",
   initialState,
   reducers: {
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload
+    getAnswers: (state, action: PayloadAction<Result>) => {
+      state.totalAnswers.push(action.payload)
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { incrementByAmount } = quizSlice.actions
+export const { getAnswers } = quizSlice.actions
 
 export default quizSlice.reducer

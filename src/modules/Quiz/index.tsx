@@ -1,27 +1,33 @@
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import Button from "./components/Button"
 import Input from "./components/Input"
 import Legend from "./components/Legend"
-import styles from "./index.module.css"
-import { useAppSelector } from "../../hooks/RtkHooks"
+import { FC, useState } from "react"
 
-const Quiz = () => {
-  const state = useAppSelector((state) => state.quiz.value)
+import { useAppDispatch } from "../../hooks/RtkHooks"
+import { INotWorking } from "../../types/reapairRequest.interfaces"
+import { getAnswers } from "./redux/quiz"
+
+const Quiz = ({ ...props }: INotWorking) => {
+  const dispatch = useAppDispatch()
+
+  const onSetTrueHandler = () => {
+    dispatch(getAnswers({ ...props, userAnswer: true }))
+  }
+
+  const onSetFalseHandler = () => {
+    dispatch(getAnswers({ ...props, userAnswer: false }))
+  }
+
   return (
-    <fieldset className="flex  p-4 border w-full ">
-      <Legend>Привет</Legend>
-      <div className="">
-        <Input id="firstQuestion" name="firstQuestion" value={"as"}>
-          Да
-        </Input>
-        <Input id="firstQuestion" name="firstQuestion" value={"as"}>
-          Да
-        </Input>
-        <Input id="firstQuestion" name="firstQuestion" value={"as"}>
-          Да
-        </Input>
+    <div>
+      <p>{props.questionTitle}</p>
+      <div className="flex space-x-3">
+        <Button onClick={onSetTrueHandler}>Да</Button>
+
+        <Button onClick={onSetFalseHandler}>Нет</Button>
       </div>
-    </fieldset>
+    </div>
   )
 }
 
