@@ -1,6 +1,7 @@
 import { Layout } from "./layout"
 import Quiz from "./modules/Quiz"
 import { data } from "./const/repairRequest"
+import Result from "./modules/Result"
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
           ))}
         </div>
 
-        <div></div>
+        <Result />
       </Layout>
     </div>
   )
