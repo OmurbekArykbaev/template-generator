@@ -12,8 +12,6 @@ function App() {
             <Quiz key={q.id} {...q} />
           ))}
         </div>
-
-        <Result />
       </Layout>
     </div>
   )

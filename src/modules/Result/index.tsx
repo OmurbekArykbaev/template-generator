@@ -6,7 +6,7 @@ import useGetTypeIssue from "./hooks/useGetTypeIssue"
 
 const Result = () => {
   const template = useGetTypeIssue()
-  const resultIsDone = useAppSelector((state) => state.quiz.answersIsDone)
+  const  resultIsDone = useAppSelector((state) => state.quiz.answersIsDone)
   const { ls, login, password, phone } = useAppSelector(
     (state) => state.userData
   )

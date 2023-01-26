@@ -1,10 +1,8 @@
-import { useSelector, useDispatch } from "react-redux"
-import Button from "./components/Button"
-import Input from "./components/Input"
-import Legend from "./components/Legend"
-import { FC, useState } from "react"
+import { useState } from "react"
 import cn from "classnames"
 
+import styles from "./index.module.css"
+import Button from "./components/Button"
 import { useAppDispatch } from "../../hooks/RtkHooks"
 import { INotWorking } from "../../types/reapairRequest.interfaces"
 import { getAnswers } from "./redux/quiz"
@@ -25,12 +23,13 @@ const Quiz = ({ ...props }: INotWorking) => {
 
   return (
     <div
-      className={cn({
+      className={cn(styles.quiz, {
         hidden: hide,
       })}
     >
-      <p>{props.questionTitle}</p>
-      <div className="flex space-x-3">
+      <h1>{props.questionTitle}</h1>
+
+      <div>
         <Button onClick={onSetTrueHandler}>Да</Button>
 
         <Button onClick={onSetFalseHandler}>Нет</Button>

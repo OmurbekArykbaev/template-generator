@@ -1,0 +1,11 @@
+.quiz {
+  @apply relative w-full p-6 border border-black rounded-xl;
+}
+
+.quiz > h1 {
+  @apply absolute -top-4 left-1/2 -translate-x-1/2 bg-[antiquewhite] px-3 text-xl;
+}
+
+.quiz > div {
+  @apply flex justify-center w-full py-1 space-x-6;
+}

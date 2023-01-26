@@ -9,7 +9,10 @@ interface Props
 
 const Button: FC<Props> = ({ children, ...props }) => {
   return (
-    <button className="flex py-3 px-6 bg-red-200 active:scale-90" {...props}>
+    <button
+      className="flex justify-center items-center py-3 px-10 bg-green-300 text-md font-bold rounded-lg text-green-700 active:scale-90"
+      {...props}
+    >
       {children}
     </button>
   )
