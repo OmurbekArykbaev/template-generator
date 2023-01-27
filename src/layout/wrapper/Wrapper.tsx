@@ -1,5 +1,6 @@
-import styles from "./Wrapper.module.css"
 import { ReactNode } from "react"
+
+import styles from "./Wrapper.module.css"
 import Header from "../header/Header"
 import Footer from "../footer/Footer"
 
