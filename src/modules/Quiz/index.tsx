@@ -1,38 +1,63 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import cn from "classnames"
 
 import styles from "./index.module.css"
 import Button from "./components/Button"
-import { useAppDispatch } from "../../hooks/RtkHooks"
+import { useAppDispatch, useAppSelector } from "../../hooks/RtkHooks"
 import { INotWorking } from "../../types/reapairRequest.interfaces"
-import { getAnswers } from "./redux/quiz"
+import { addAnswers, removeAnswers } from "./redux/quiz"
 
 const Quiz = ({ ...props }: INotWorking) => {
   const [hide, setHide] = useState<boolean>(false)
+  const answersFromStore = useAppSelector(
+    (state) => state.quiz.totalAnswers
+  ).find((p) => p.id === props.id)
+
   const dispatch = useAppDispatch()
 
+  useEffect(() => {}, [])
+
   const onSetTrueHandler = () => {
-    dispatch(getAnswers({ ...props, userAnswer: true }))
+    dispatch(addAnswers({ ...props, userAnswer: true }))
     setHide(true)
   }
 
   const onSetFalseHandler = () => {
-    dispatch(getAnswers({ ...props, userAnswer: false }))
+    dispatch(addAnswers({ ...props, userAnswer: false }))
     setHide(true)
+  }
+  const onRemoveHandler = () => {
+    dispatch(removeAnswers(props.id))
+    setHide(false)
   }
 
   return (
     <div
       className={cn(styles.quiz, {
-        hidden: hide,
+        "border-opacity-20": hide,
       })}
     >
-      <h1>{props.questionTitle}</h1>
+      <h1
+        className={cn({
+          "opacity-20": hide,
+        })}
+      >
+        {props.questionTitle}
+      </h1>
 
       <div>
-        <Button onClick={onSetTrueHandler}>Да</Button>
+        {!answersFromStore ? (
+          <>
+            <Button onClick={onSetTrueHandler}>Да</Button>
+            <Button onClick={onSetFalseHandler}>Нет</Button>
+          </>
+        ) : (
+          <Button onClick={onRemoveHandler} className="bg-red-300 text-red-600">
+            Удалить
+          </Button>
+        )}
 
-        <Button onClick={onSetFalseHandler}>Нет</Button>
+        {/* {answersFromStore && } */}
       </div>
     </div>
   )

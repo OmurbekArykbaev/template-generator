@@ -1,12 +1,14 @@
-import React from "react"
+import { data } from "../../const/repairRequest"
 import { Wrapper } from "../../layout"
+import Quiz from "../../modules/Quiz"
 
 const NotWorking = () => {
   return (
     <Wrapper>
       <section>
-        ne rab
-        <h1 className="bg-red-500 h-[100px]">sasa</h1>
+        {data.map((p) => (
+          <Quiz {...p} />
+        ))}
       </section>
     </Wrapper>
   )

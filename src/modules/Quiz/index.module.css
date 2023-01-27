@@ -1,5 +1,5 @@
 .quiz {
-  @apply relative w-full p-6 border border-black rounded-xl;
+  @apply relative w-full p-6 my-8 border border-black rounded-xl;
 }
 
 .quiz > h1 {

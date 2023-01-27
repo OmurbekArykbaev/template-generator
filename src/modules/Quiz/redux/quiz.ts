@@ -21,14 +21,19 @@ export const quizSlice = createSlice({
   name: "quiz-repair-request",
   initialState,
   reducers: {
-    getAnswers: (state, action: PayloadAction<Result>) => {
+    addAnswers: (state, action: PayloadAction<Result>) => {
       state.totalAnswers.push(action.payload)
-      state.answersIsDone = fromArrayToString(state.totalAnswers)
+      // state.answersIsDone = fromArrayToString(state.totalAnswers)
+    },
+    removeAnswers: (state, action: PayloadAction<number>) => {
+      state.totalAnswers = state.totalAnswers.filter(
+        (ans) => ans.id !== action.payload
+      )
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { getAnswers } = quizSlice.actions
+export const { addAnswers, removeAnswers } = quizSlice.actions
 
 export default quizSlice.reducer

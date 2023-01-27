@@ -9,7 +9,7 @@ export const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/notworking",
+    path: "/not-working",
     element: <NotWorking />,
   },
 ])
