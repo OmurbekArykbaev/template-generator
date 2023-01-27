@@ -1,8 +1,16 @@
 import styles from "./Wrapper.module.css"
 import { ReactNode } from "react"
+import Header from "../header/Header"
+import Footer from "../footer/Footer"
 
 const Wrapper = ({ children }: { children: ReactNode }): JSX.Element => {
-  return <main className={styles.container}>{children}</main>
+  return (
+    <>
+      <Header />
+      <main className={styles.container}>{children}</main>
+      <Footer />
+    </>
+  )
 }
 
 export default Wrapper

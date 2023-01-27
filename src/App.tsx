@@ -1,18 +1,11 @@
-import { Layout } from "./layout"
-import Quiz from "./modules/Quiz"
-import { data } from "./const/repairRequest"
-import Result from "./modules/Result"
+import { RouterProvider } from "react-router-dom"
+
+import { router } from "./routes/RoutesData"
 
 function App() {
   return (
     <div className="App">
-      <Layout>
-        <div className="flex flex-col space-y-8 w-full h-[100px]">
-          {data.map((q) => (
-            <Quiz key={q.id} {...q} />
-          ))}
-        </div>
-      </Layout>
+      <RouterProvider router={router} />
     </div>
   )
 }
