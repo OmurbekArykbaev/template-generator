@@ -23,17 +23,19 @@ export const quizSlice = createSlice({
   reducers: {
     addAnswers: (state, action: PayloadAction<Result>) => {
       state.totalAnswers.push(action.payload)
-      // state.answersIsDone = fromArrayToString(state.totalAnswers)
     },
     removeAnswers: (state, action: PayloadAction<number>) => {
       state.totalAnswers = state.totalAnswers.filter(
         (ans) => ans.id !== action.payload
       )
     },
+    generateAnswer: (state) => {
+      state.answersIsDone = fromArrayToString(state.totalAnswers)
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addAnswers, removeAnswers } = quizSlice.actions
+export const { addAnswers, removeAnswers, generateAnswer } = quizSlice.actions
 
 export default quizSlice.reducer

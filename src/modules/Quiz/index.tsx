@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import cn from "classnames"
 
 import styles from "./index.module.css"
-import Button from "./components/Button"
+import Button from "../../components/button/Button"
 import { useAppDispatch, useAppSelector } from "../../hooks/RtkHooks"
 import { INotWorking } from "../../types/reapairRequest.interfaces"
 import { addAnswers, removeAnswers } from "./redux/quiz"
