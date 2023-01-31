@@ -29,7 +29,9 @@ const Result = () => {
   return (
     <>
       <div className="flex w-full justify-center mb-4">
-        <Button onClick={onGenerateHandler}>Генерировать</Button>
+        <Button className="h-[50px]" onClick={onGenerateHandler}>
+          Генерировать
+        </Button>
       </div>
       {isVisible && (
         <div className="flex justify-center">
