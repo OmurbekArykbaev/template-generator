@@ -21,7 +21,6 @@ const CustomSelect: FC<ICustomSelect> = ({
         className="w-auto text-center"
         placeholder="Выбрать пункт..."
         onChange={(value) => onSelectHandler(value)}
-        value={optionArray}
       />
     )
   } else return null
