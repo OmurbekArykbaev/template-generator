@@ -9,6 +9,7 @@ import { useState, useEffect } from "react"
 
 const Result = () => {
   const [value, setValue] = useState<string>("")
+  const [isVisible, setIsVisible] = useState<boolean>(false)
   const template = useGetTypeIssue()
   const dispatch = useAppDispatch()
 
@@ -22,20 +23,23 @@ const Result = () => {
   const onGenerateHandler = () => {
     dispatch(generateAnswer())
     setValue(value)
+    setIsVisible(true)
   }
 
   return (
     <>
-      <div className="flex justify-center mb-4">
+      <div className="flex w-full justify-center mb-4">
         <Button onClick={onGenerateHandler}>Генерировать</Button>
       </div>
-      <div className="flex justify-center">
-        <TextArea
-          className="w-[80%] h-[130px]"
-          onChange={(e) => setValue(e.target.value)}
-          value={value}
-        />
-      </div>
+      {isVisible && (
+        <div className="flex justify-center">
+          <TextArea
+            className="w-[80%] h-[130px]"
+            onChange={(e) => setValue(e.target.value)}
+            value={value}
+          />
+        </div>
+      )}
     </>
   )
 }
