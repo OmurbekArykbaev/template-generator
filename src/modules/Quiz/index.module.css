@@ -1,9 +1,9 @@
 .quiz {
-  @apply relative w-full p-6 my-8 border border-black rounded-xl;
+  @apply relative w-full p-2 my-8 border border-black rounded-xl;
 }
 
 .quiz > h1 {
-  @apply absolute -top-4 left-1/2 -translate-x-1/2 bg-[antiquewhite] px-3 text-xl;
+  @apply absolute -top-4 left-1/2 -translate-x-1/2 bg-[antiquewhite] px-3 text-[16px];
 }
 
 .quiz > div {

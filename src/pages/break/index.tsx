@@ -1,29 +1,34 @@
-import { InW } from "../../const/AllQuiz"
-import { useAppDispatch } from "../../hooks/RtkHooks"
+import { useEffect } from "react"
+
+import { breaks } from "../../const/AllQuiz"
 import { Wrapper } from "../../layout"
 import Back from "../../layout/backNavigateBtn/Back"
 import Quiz from "../../modules/Quiz"
 import Result from "../../modules/Result"
-import { useEffect } from "react"
+import { useAppDispatch, useAppSelector } from "../../hooks/RtkHooks"
 import { getType } from "../../modules/Result/slices/getTypeIssueSlices"
 import { clearAnswer } from "../../modules/Quiz/redux/quiz"
+import useGetUserData from "../../hooks/useGetUserData"
+import { useNavigate } from "react-router-dom"
 
-const NotWorking = () => {
+const BreakPage = () => {
   const dispatch = useAppDispatch()
+  const isHasData = useGetUserData()
+  const navigate = useNavigate()
 
   useEffect(() => {
-    dispatch(getType("InternetNeRabotaet"))
+    dispatch(getType("Break"))
 
     return function cleanUpAnswer() {
       dispatch(clearAnswer())
     }
-  }, [])
+  }, [isHasData])
 
   return (
     <Wrapper>
       <Back />
       <section>
-        {InW.map((item) => (
+        {breaks.map((item) => (
           <Quiz key={item.id} {...item} />
         ))}
       </section>
@@ -32,4 +37,4 @@ const NotWorking = () => {
   )
 }
 
-export default NotWorking
+export default BreakPage

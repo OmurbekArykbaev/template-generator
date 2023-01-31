@@ -12,7 +12,7 @@ const Button: FC<Props> = ({ children, className, ...props }) => {
   return (
     <button
       className={cn(
-        "flex justify-center items-center py-3 px-10 bg-green-300 text-md font-bold rounded-lg text-green-700 active:scale-90",
+        "flex justify-center items-center py-3 px-5 bg-green-300 text-[12px] font-bold rounded-lg text-green-700 active:scale-90",
         className
       )}
       {...props}

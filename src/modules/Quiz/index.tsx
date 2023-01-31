@@ -1,21 +1,23 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import cn from "classnames"
 
 import styles from "./index.module.css"
-import Button from "../../components/button/Button"
 import { useAppDispatch, useAppSelector } from "../../hooks/RtkHooks"
-import { INotWorking } from "../../types/reapairRequest.interfaces"
+import { IQuiz, IStateOption } from "../../types/AllQuiz.interfaces"
 import { addAnswers, removeAnswers } from "./redux/quiz"
+import { motion } from "framer-motion"
 
-const Quiz = ({ ...props }: INotWorking) => {
+import Buttons from "./components/Buttons"
+import CustomSelect from "./components/CustomSelect"
+import ButtonRemove from "./components/ButtonRemove"
+
+const Quiz = ({ ...props }: IQuiz) => {
   const [hide, setHide] = useState<boolean>(false)
   const answersFromStore = useAppSelector(
     (state) => state.quiz.totalAnswers
   ).find((p) => p.id === props.id)
 
   const dispatch = useAppDispatch()
-
-  useEffect(() => {}, [])
 
   const onSetTrueHandler = () => {
     dispatch(addAnswers({ ...props, userAnswer: true }))
@@ -26,40 +28,50 @@ const Quiz = ({ ...props }: INotWorking) => {
     dispatch(addAnswers({ ...props, userAnswer: false }))
     setHide(true)
   }
+
   const onRemoveHandler = () => {
     dispatch(removeAnswers(props.id))
     setHide(false)
   }
 
+  const onSelectHandler = (value: IStateOption | null) => {
+    dispatch(addAnswers({ ...props, userAnswer: value?.answer }))
+    setHide(true)
+  }
+
   return (
-    <div
-      className={cn(styles.quiz, {
-        "border-opacity-20": hide,
-      })}
+    <motion.div
+      initial={{ y: 200 }}
+      animate={{ y: 0 }}
+      transition={{ ease: "easeOut", duration: 0.3 }}
     >
-      <h1
-        className={cn({
-          "opacity-20": hide,
+      <div
+        className={cn(styles.quiz, {
+          "border-opacity-20": hide,
         })}
       >
-        {props.questionTitle}
-      </h1>
+        <h1>{props.questionTitle}</h1>
 
-      <div>
-        {!answersFromStore ? (
-          <>
-            <Button onClick={onSetTrueHandler}>Да</Button>
-            <Button onClick={onSetFalseHandler}>Нет</Button>
-          </>
-        ) : (
-          <Button onClick={onRemoveHandler} className="bg-red-300 text-red-600">
-            Удалить
-          </Button>
-        )}
+        <div>
+          <Buttons
+            isVisible={Boolean(!answersFromStore)}
+            isVisible2={Boolean(props.stateOption)}
+            onSetFalseHandler={onSetFalseHandler}
+            onSetTrueHandler={onSetTrueHandler}
+          />
+          <ButtonRemove
+            isVisible={Boolean(answersFromStore)}
+            onRemoveHandler={onRemoveHandler}
+          />
 
-        {/* {answersFromStore && } */}
+          <CustomSelect
+            isVisible={Boolean(props.stateOption && !answersFromStore)}
+            optionArray={props.stateOption}
+            onSelectHandler={onSelectHandler}
+          />
+        </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

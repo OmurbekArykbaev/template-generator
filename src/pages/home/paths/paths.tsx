@@ -20,9 +20,9 @@ export const paths: IPaths[] = [
     icon: <GiBreakingChain size={40} />,
   },
   {
-    to: "/slow-speed",
+    to: "/slow",
     title: "Низкая скорость",
     icon: <MdSpeed size={40} />,
   },
-  { to: "/iptv", title: "Проблемы с IPTV", icon: <RiTvLine size={40} /> },
+  // { to: "/iptv", title: "Проблемы с IPTV", icon: <RiTvLine size={40} /> },
 ]

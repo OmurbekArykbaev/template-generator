@@ -1,12 +1,7 @@
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { createSlice } from "@reduxjs/toolkit"
 
-type TypeIssue =
-  | "InternetNeRabotaet"
-  | "Obryvy"
-  | "SKN"
-  | "NerabotaetTV"
-  | "NizkayaSkorost"
+type TypeIssue = "InternetNeRabotaet" | "Break" | "SKN" | "IPTV" | "SlowSpeed"
 
 interface init {
   type: TypeIssue

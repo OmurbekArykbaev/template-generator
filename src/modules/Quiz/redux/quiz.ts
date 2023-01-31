@@ -1,11 +1,11 @@
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { createSlice } from "@reduxjs/toolkit"
 
-import { INotWorking } from "../../../types/reapairRequest.interfaces"
+import { IStateOption, IQuiz } from "../../../types/AllQuiz.interfaces"
 import { fromArrayToString } from "../helpers/fromArrayToString"
 
-export interface Result extends INotWorking {
-  userAnswer?: boolean | null
+export interface Result extends IQuiz {
+  userAnswer?: boolean | null | string
 }
 
 interface init {
@@ -24,18 +24,26 @@ export const quizSlice = createSlice({
     addAnswers: (state, action: PayloadAction<Result>) => {
       state.totalAnswers.push(action.payload)
     },
+
     removeAnswers: (state, action: PayloadAction<number>) => {
       state.totalAnswers = state.totalAnswers.filter(
         (ans) => ans.id !== action.payload
       )
     },
+
     generateAnswer: (state) => {
       state.answersIsDone = fromArrayToString(state.totalAnswers)
+    },
+
+    clearAnswer: (state) => {
+      state.totalAnswers = []
+      state.answersIsDone = ""
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addAnswers, removeAnswers, generateAnswer } = quizSlice.actions
+export const { addAnswers, removeAnswers, generateAnswer, clearAnswer } =
+  quizSlice.actions
 
 export default quizSlice.reducer

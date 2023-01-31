@@ -30,7 +30,11 @@ const Result = () => {
         <Button onClick={onGenerateHandler}>Генерировать</Button>
       </div>
       <div className="flex justify-center">
-        <TextArea className="w-[80%] h-[130px]" value={value} />
+        <TextArea
+          className="w-[80%] h-[130px]"
+          onChange={(e) => setValue(e.target.value)}
+          value={value}
+        />
       </div>
     </>
   )
